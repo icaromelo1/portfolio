@@ -6,7 +6,7 @@
 
       <div class="section-header">
         <h2>Stack técnica</h2>
-        <span class="count">18 ferramentas · prod-tested</span>
+        <span class="count">prod-tested · missão crítica</span>
       </div>
 
       <div class="stack-grid">
@@ -74,12 +74,20 @@
         </div>
 
         <div class="stack-card">
-          <h3><span class="ix">03</span>Infra / Tools</h3>
-          <div class="cat">deploy · data · ci</div>
+          <h3><span class="ix">03</span>Infra / Auth</h3>
+          <div class="cat">deploy · ci/cd · enterprise</div>
           <ul class="stack-list">
             <li class="stack-item">
               <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 4h-3v3h3V4zm-4 0h-3v3h3V4zm-4 0h-3v3h3V4zm12 4h-3v3h3V8zm-4 0h-3v3h3V8zm-4 0h-3v3h3V8zm-4 0h-3v3h3V8zm-4 0h-3v3h3V8zm17 4c-.5 0-1 .1-1.5.3-.3-1.5-1.6-2.6-3.1-2.6-.4 0-.7.1-1 .2-.3-1.7-1.8-3-3.5-3-1.7 0-3.2 1.3-3.5 3-2 .3-3.5 2-3.5 4 0 2.2 1.8 4 4 4h11c1.9 0 3.5-1.6 3.5-3.5S22.4 12 20.5 12z"/></svg></span>
               Docker
+            </li>
+            <li class="stack-item">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h8v2H4v16h16v-6h2v8H2V2zm10 0h10v10h-2V5.414L11.414 14 10 12.586 18.586 4H12V2z"/></svg></span>
+              Kubernetes
+            </li>
+            <li class="stack-item">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+              Keycloak / LDAP
             </li>
             <li class="stack-item">
               <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.128 0H6.872A6.872 6.872 0 0 0 0 6.872v10.256A6.872 6.872 0 0 0 6.872 24h10.256A6.872 6.872 0 0 0 24 17.128V6.872A6.872 6.872 0 0 0 17.128 0zM12 4l8 4.5v7L12 20l-8-4.5v-7L12 4z"/></svg></span>
@@ -87,19 +95,11 @@
             </li>
             <li class="stack-item">
               <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 1.5L1 6v12l9.5 4.5L20 18V6zM12 4.5l5.5 2.6-5.5 2.6-5.5-2.6zM4 9.2l7 3.3v7.2l-7-3.3zm9 10.5v-7.2l7-3.3v7.2z"/></svg></span>
-              Redis
-            </li>
-            <li class="stack-item">
-              <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5l-3 7 3 7h2l-2-7 2-7zm12 0l-2 7 2 7h-2l-3-7 3-7zm-7 0h2v14h-2z"/></svg></span>
-              AWS S3/SES
-            </li>
-            <li class="stack-item">
-              <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20z"/></svg></span>
-              Railway / Vercel
+              Redis / Bull
             </li>
             <li class="stack-item">
               <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.546 10.93L13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039 1.837 1.837 0 0 1-3.001-2.001L13.504 8.94v6.39a1.84 1.84 0 0 1 .49.331 1.837 1.837 0 0 1-2.598 2.6 1.838 1.838 0 0 1 .6-2.998v-6.45a1.838 1.838 0 0 1-.997-2.412l-2.72-2.72L.452 10.88a1.55 1.55 0 0 0 0 2.188L10.93 23.546a1.55 1.55 0 0 0 2.187 0l10.43-10.43a1.55 1.55 0 0 0 0-2.187"/></svg></span>
-              Git / GitHub
+              GitLab CI/CD
             </li>
           </ul>
         </div>

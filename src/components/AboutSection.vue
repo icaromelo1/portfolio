@@ -12,17 +12,24 @@
       <div class="about">
         <div class="about-text">
           <p>
-            <span class="hl">Backend-first developer</span> com foco em sistemas reais —
-            saúde ocupacional e sistemas judiciais. Quase
-            <span class="mono">3.000 commits</span> em <span class="mono">18 meses</span>
-            em backends NestJS complexos, frontends Vue/Quasar e microsserviços.
+            <span class="hl">Desenvolvedor Full Stack Sênior</span> com mais de 3 anos
+            em sistemas que não podem falhar — judiciário e saúde corporativa. Conduzo
+            dois contratos PJ simultâneos: sistemas críticos para o
+            <span class="hl">Tribunal de Justiça do Amazonas</span> e uma plataforma
+            de saúde com microsserviços e agentes de IA.
           </p>
           <p>
-            Estudando IA na <span class="hl">UNIFOR</span> (jan/2025 – jan/2027).
-            Atualmente em Fortaleza, CE — atendendo remoto para Brasil e exterior.
+            Do design de arquitetura ao deploy em <span class="mono">Kubernetes</span> —
+            com autonomia total. Aplico <span class="hl">Sistemas Multiagentes e
+            orquestração de LLMs</span> em produção, não só em projetos pessoais.
+            Inglês <span class="mono">B1</span> técnico.
+          </p>
+          <p>
+            Cursando <span class="hl">ADS na UNIFOR</span> (jan/2025 – jan/2027).
+            Fortaleza, CE — atendendo remoto para Brasil e exterior.
           </p>
           <p class="cta-line">
-            <span class="caret">&gt;</span> aceitando vagas PJ entre R$ 12k–16k · contratos internacionais
+            <span class="caret">&gt;</span> aceitando PJ entre R$ 12k–16k · contratos internacionais
           </p>
         </div>
 

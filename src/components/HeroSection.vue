@@ -5,26 +5,26 @@
 
         <div class="hero-tag">
           <span class="dot" />
-          <span>Fullstack Developer</span>
+          <span>Full Stack Developer</span>
           <span class="sep">·</span>
           <span>Fortaleza, Brasil</span>
           <span class="sep">·</span>
-          <span style="color:var(--accent)">disponível</span>
+          <span style="color:var(--accent)">disponível PJ</span>
         </div>
 
         <h1>
           <span class="name">Icaro Melo</span>
-          <span class="line">Backend-first. Sistemas reais.</span>
-          <span class="line">Quase <span class="accent-num">3.000</span> commits em <span class="accent-num">18</span> meses.</span>
+          <span class="line">Backend-first. Missão crítica.</span>
+          <span class="line">Judiciário · saúde · <span class="accent-text">dois contratos simultâneos</span>.</span>
         </h1>
 
         <div class="hero-stack">
           NestJS <span class="pipe">·</span>
           TypeScript <span class="pipe">·</span>
-          Vue <span class="pipe">·</span>
-          Quasar <span class="pipe">·</span>
+          Vue 3 <span class="pipe">·</span>
+          Kubernetes <span class="pipe">·</span>
           PostgreSQL <span class="pipe">·</span>
-          Docker
+          IA
         </div>
 
         <div class="hero-actions">
@@ -156,7 +156,7 @@ h1 .line {
   letter-spacing: -0.025em;
   margin-top: 4px;
 }
-h1 .accent-num { color: var(--accent); }
+h1 .accent-text { color: var(--accent); }
 
 .hero-stack {
   font-family: var(--font-mono);
