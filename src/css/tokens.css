@@ -1,0 +1,41 @@
+:root {
+  /* backgrounds */
+  --bg-base:     #0B0B0E;
+  --bg-surface:  #16171B;
+  --bg-elevated: #1C1D22;
+
+  /* borders */
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  /* text */
+  --text-primary:   #ECEDEE;
+  --text-secondary: #A1A2A8;
+  --text-muted:     #6B6C73;
+
+  /* accent — mint */
+  --accent:      #3FCF8E;
+  --accent-dim:  rgba(63, 207, 142, 0.14);
+  --accent-glow: rgba(63, 207, 142, 0.35);
+
+  /* purple */
+  --purple:     #7C3AED;
+  --purple-hi:  #A78BFA;
+  --purple-dim: rgba(124, 58, 237, 0.20);
+
+  /* gold */
+  --gold:      #FBBF24;
+  --gold-glow: rgba(251, 191, 36, 0.25);
+
+  /* coral */
+  --coral: #D97757;
+
+  /* easing */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* typography */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+}

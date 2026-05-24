@@ -1,0 +1,15 @@
+.DS_Store
+.thumbs.db
+node_modules
+/dist
+
+.quasar
+/src-capacitor
+/src-cordova
+
+.eslintcache
+
+*.local
+.env
+.env.*
+!.env.example
