@@ -13,10 +13,10 @@
         <div class="about-text">
           <p>
             <span class="hl">Desenvolvedor Full Stack Sênior</span> com mais de 3 anos
-            em sistemas que não podem falhar — judiciário e saúde corporativa. Conduzo
-            dois contratos PJ simultâneos: sistemas críticos para o
-            <span class="hl">Tribunal de Justiça do Amazonas</span> e uma plataforma
-            de saúde com microsserviços e agentes de IA.
+            atuando em domínios que exigem confiabilidade — judiciário, saúde corporativa
+            e automação. Experiente em transitar entre contextos complexos com autonomia:
+            sistemas críticos, integrações enterprise e plataformas com microsserviços
+            e agentes de IA.
           </p>
           <p>
             Do design de arquitetura ao deploy em <span class="mono">Kubernetes</span> —

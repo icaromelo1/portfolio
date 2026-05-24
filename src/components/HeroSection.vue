@@ -15,7 +15,7 @@
         <h1>
           <span class="name">Icaro Melo</span>
           <span class="line">Backend-first. Missão crítica.</span>
-          <span class="line">Judiciário · saúde · <span class="accent-text">dois contratos simultâneos</span>.</span>
+          <span class="line">Judiciário · saúde · <span class="accent-text">múltiplos domínios</span>.</span>
         </h1>
 
         <div class="hero-stack">
