@@ -78,6 +78,8 @@
 </template>
 
 <script setup lang="ts">
+import ProjectCard from 'src/components/ProjectCard.vue';
+
 const tier1 = [
   {
     index: '01', category: 'fullstack · desktop',
