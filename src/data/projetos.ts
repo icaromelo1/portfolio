@@ -34,8 +34,9 @@ export const projetos: Projeto[] = [
     stack: ['Vue 3', 'Quasar', 'PixiJS', 'NestJS', 'TypeORM', 'PostgreSQL', 'Socket.IO', 'WebRTC'],
     estado: 'Em desenvolvimento',
     repo: 'https://github.com/icaroMelo1/kairosio',
-    repoPublico: false,
+    repoPublico: true,
     noAr: 'https://icaromelodev.com.br/kairos',
+    imagem: '/projetos/kairos.jpg',
   },
   {
     id: 'oraculo',
@@ -46,8 +47,9 @@ export const projetos: Projeto[] = [
     stack: ['NestJS', 'TypeScript', 'PostgreSQL', 'Vue 3', 'Quasar'],
     estado: 'Estável, em uso',
     repo: 'https://github.com/icaroMelo1/oraculo-api',
-    repoPublico: false,
+    repoPublico: true,
     noAr: 'https://icaromelodev.com.br/oraculo/',
+    imagem: '/projetos/oraculo.jpg',
   },
   {
     id: 'apply',
@@ -58,7 +60,7 @@ export const projetos: Projeto[] = [
     stack: ['TypeScript', 'Playwright', 'Drizzle', 'SQLite', 'Nuxt 4', 'Quasar'],
     estado: 'Estável, em uso',
     repo: 'https://github.com/icaroMelo1/apply-service',
-    repoPublico: false,
+    repoPublico: true,
     noAr: 'https://apply.icaromelodev.com.br',
   },
   {
@@ -69,7 +71,8 @@ export const projetos: Projeto[] = [
       'A saída óbvia era um orquestrador central mandando em todo mundo. Preferi não ter dono: o correio carrega só duas regras — cada mensagem repassada gasta um salto, e quem abriu a conversa é quem a encerra. Isso basta para não haver laço infinito. Ao fechar, o colega destila o que aprendeu num arquivo de texto legível, então a memória de longo prazo dá para ler e corrigir à mão.',
     stack: ['TypeScript', 'MCP', 'Node.js'],
     estado: 'Em desenvolvimento',
-    repoPublico: false,
+    repo: 'https://github.com/icaroMelo1/escritorio',
+    repoPublico: true,
   },
   {
     id: 'brain',
@@ -82,6 +85,7 @@ export const projetos: Projeto[] = [
     repo: 'https://github.com/icaroMelo1/brain-atlas',
     repoPublico: true,
     noAr: 'https://icaromelodev.com.br/brain',
+    imagem: '/projetos/brain.jpg',
   },
   {
     id: 'claudicaro',
@@ -92,7 +96,7 @@ export const projetos: Projeto[] = [
     stack: ['Electron', 'Vue 3', 'Quasar', 'TypeScript', 'Prisma', 'SQLite', 'Vitest'],
     estado: 'Em desenvolvimento',
     repo: 'https://github.com/icaroMelo1/claudicaro-cli',
-    repoPublico: false,
+    repoPublico: true,
   },
   {
     id: 'minecraft',
@@ -103,8 +107,7 @@ export const projetos: Projeto[] = [
     stack: ['TypeScript', 'Node.js', 'Docker', 'RCON', 'systemd'],
     estado: 'Estável, em uso',
     repo: 'https://github.com/icaroMelo1/discord-bots',
-    repoPublico: false,
-    noAr: 'https://icaromelodev.com.br/minecraft/map/',
+    repoPublico: true,
   },
   {
     id: 'wildpie',
@@ -119,13 +122,15 @@ export const projetos: Projeto[] = [
   {
     id: 'psi',
     nome: 'Landing de psicologia clínica',
-    linha: 'Página de apresentação e contato para consultório particular.',
+    linha: 'Landing de psicologia clínica feita como peça de referência, com identidade fictícia.',
     descricao:
-      'A cliente não tem quem mantenha um site, e um painel de administração seria peso morto para uma página só. O conteúdo ficou num arquivo de texto e a identidade num sistema de temas trocáveis, então mudar horário ou trocar a paleta inteira não exige me chamar nem mexer em componente.',
+      'Projeto de referência: uma landing completa, com identidade fictícia, para mostrar a um cliente o resultado antes de fechar o trabalho. O conteúdo mora num arquivo de texto e a identidade num sistema de temas trocáveis, então trocar a paleta inteira ou o texto não exige tocar em componente nenhum.',
     stack: ['Vue 3', 'Quasar', 'Vite'],
     estado: 'Finalizado',
-    repoPublico: false,
+    repo: 'https://github.com/icaroMelo1/psi-landing',
+    repoPublico: true,
     noAr: 'https://icaromelodev.com.br/referencia-projeto-psicologo/',
+    imagem: '/projetos/psi.jpg',
   },
   {
     id: 'wallet',
@@ -136,7 +141,7 @@ export const projetos: Projeto[] = [
     stack: ['NestJS', 'JWT', 'TypeORM', 'MySQL', 'Prometheus'],
     estado: 'Finalizado',
     repo: 'https://github.com/icaroMelo1/personal-wallet',
-    repoPublico: false,
+    repoPublico: true,
   },
   {
     id: 'barrel',
@@ -146,7 +151,8 @@ export const projetos: Projeto[] = [
       'Comecei quando o programa que eu usava foi descontinuado e as alternativas ou eram de outro sistema ou estavam abandonadas. Fiz nativo de propósito, sem camada web, para aprender a plataforma pelo caminho difícil. Está pausado num problema honesto: o cliente de jogos abre com a janela em branco, e a causa é o processo gráfico dele falhando em silêncio sob a camada de compatibilidade.',
     stack: ['Swift', 'SwiftUI', 'Wine'],
     estado: 'Pausado',
-    repoPublico: false,
+    repo: 'https://github.com/icaroMelo1/barrel',
+    repoPublico: true,
   },
   {
     id: 'site',

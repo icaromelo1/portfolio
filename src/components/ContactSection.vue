@@ -24,6 +24,10 @@
         <a class="botao" href="https://github.com/icaroMelo1" target="_blank" rel="noopener">
           GitHub <span aria-hidden="true">↗</span>
         </a>
+
+        <a class="botao" href="/cv-icaro-melo.pdf" target="_blank" rel="noopener">
+          Currículo (PDF) <span aria-hidden="true">↗</span>
+        </a>
       </div>
       <p aria-live="polite" class="sr-only">{{ copiado ? 'E-mail copiado' : '' }}</p>
     </div>
