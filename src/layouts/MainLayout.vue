@@ -16,6 +16,6 @@ import AppFooter from 'src/components/AppFooter.vue';
 <style scoped>
 .layout {
   min-height: 100vh;
-  background: var(--bg-base);
+  background: var(--paper);
 }
 </style>

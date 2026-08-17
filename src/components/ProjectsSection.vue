@@ -1,187 +1,107 @@
 <template>
-  <section class="section" id="projetos">
-    <div class="container">
+  <section id="projetos" class="band">
+    <div class="spread cabeca">
+      <h2 class="label">Projetos</h2>
+      <div>
+        <p class="band-lede">
+          Doze projetos meus, com o estado de cada um dito na frente.
+        </p>
 
-      <div class="section-label">// projetos selecionados</div>
-
-      <div class="section-header">
-        <h2>Projetos</h2>
-        <span class="count">04 destaque · 04 outros</span>
-      </div>
-
-      <div class="projects-grid">
-        <ProjectCard
-          v-for="p in tier1"
-          :key="p.title"
-          v-bind="p"
-        />
-      </div>
-
-      <!-- Tier 2 -->
-      <div class="tier2">
-        <div class="section-label" style="margin-bottom:24px">// outros projetos</div>
-        <div class="tier2-list">
-
-          <a href="https://github.com/icaroMelo1" target="_blank" rel="noopener" class="tier2-row">
-            <span class="folder">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-            </span>
-            <span class="tier2-name">Autenticador Digital</span>
-            <span class="tier2-stack">Java · SHA-1 · AVL Tree · Estruturas de Dados</span>
-            <span class="tier2-link">
-              GitHub
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-            </span>
-          </a>
-
-          <a href="https://github.com/icaroMelo1/n688-clinica-medica" target="_blank" rel="noopener" class="tier2-row">
-            <span class="folder">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-            </span>
-            <span class="tier2-name">Clínica Médica N688</span>
-            <span class="tier2-stack">SQL · Banco de Dados · UNIFOR</span>
-            <span class="tier2-link">
-              GitHub
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-            </span>
-          </a>
-
-          <a href="https://github.com/icaroMelo1/personal-wallet" target="_blank" rel="noopener" class="tier2-row">
-            <span class="folder">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-            </span>
-            <span class="tier2-name">Personal Wallet</span>
-            <span class="tier2-stack">NestJS · JWT · TypeORM · MySQL · Prometheus</span>
-            <span class="tier2-link">
-              GitHub
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-            </span>
-          </a>
-
-          <a href="https://github.com/icaroMelo1/minecraft-guardian-bot" target="_blank" rel="noopener" class="tier2-row">
-            <span class="folder">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-            </span>
-            <span class="tier2-name">Minecraft Guardian Bot</span>
-            <span class="tier2-stack">Node.js · mineflayer · Forge Handshake · Docker</span>
-            <span class="tier2-link">
-              GitHub
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-            </span>
-          </a>
-
+        <div class="barra" role="group" aria-label="Filtrar projetos por estado">
+          <button
+            v-for="opcao in opcoes"
+            :key="opcao"
+            type="button"
+            class="filtro"
+            :class="{ ativo: filtro === opcao }"
+            :aria-pressed="filtro === opcao"
+            @click="filtro = opcao"
+          >
+            {{ opcao }}
+          </button>
+          <span class="contagem" aria-live="polite">
+            {{ visiveis.length }} de {{ projetos.length }}
+          </span>
         </div>
       </div>
-
     </div>
+
+    <div class="lista">
+      <ProjectCard v-for="p in visiveis" :key="p.id" :projeto="p" />
+    </div>
+
+    <p v-if="!visiveis.length" class="vazio">Nenhum projeto com esse estado.</p>
   </section>
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from 'vue';
 import ProjectCard from 'src/components/ProjectCard.vue';
+import { projetos, estados, type Estado } from 'src/data/projetos';
 
-const tier1 = [
-  {
-    index: '01', category: 'fullstack · desktop',
-    title: 'Claudicaro CLI',
-    tagline: 'Desktop AI orchestrator — Claude, Gemini e Copilot em uma única interface com dispatcher inteligente.',
-    stack: ['Electron', 'Vue 3', 'Quasar', 'TypeScript', 'Prisma', 'SQLite', 'Vitest'],
-    status: 'dev' as const,
-    accent: 'coral' as const,
-    isPrivate: true,
-    detailRoute: '/claudicaro',
-  },
-  {
-    index: '02', category: 'fullstack · gamified',
-    title: 'Kairos IO',
-    tagline: 'Ambiente virtual gamificado pixel art onde você trabalha dentro de um mapa top-down com agentes de IA.',
-    stack: ['Vue 3', 'Quasar', 'NestJS', 'TypeORM', 'PostgreSQL', 'PixiJS'],
-    status: 'dev' as const,
-    accent: 'purple' as const,
-    liveUrl: '/kairos',
-  },
-  {
-    index: '03', category: 'viz · realtime',
-    title: 'Brain Atlas',
-    tagline: 'Visualizador 3D interativo que acende em tempo real enquanto o Claude Code pensa.',
-    stack: ['HTML', 'Canvas2D', 'Python', 'SSE'],
-    status: 'active' as const,
-    accent: 'mint' as const,
-    liveUrl: '/brain',
-  },
-  {
-    index: '04', category: 'automação · gov.br',
-    title: 'Wild Pie',
-    tagline: 'Automação de NFS-e para MEI — emissão de notas fiscais no gov.br via Playwright + IA.',
-    stack: ['NestJS', 'Vue 3', 'Quasar', 'Playwright', 'TypeORM', 'SQLite'],
-    status: 'dev' as const,
-    accent: 'gold' as const,
-    isPrivate: true,
-    liveUrl: '/wild',
-  },
-]
+type Filtro = 'Todos' | Estado;
+
+const opcoes: Filtro[] = ['Todos', ...estados];
+const filtro = ref<Filtro>('Todos');
+
+const visiveis = computed(() =>
+  filtro.value === 'Todos'
+    ? projetos
+    : projetos.filter((p) => p.estado === filtro.value),
+);
 </script>
 
 <style scoped>
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+.cabeca { margin-bottom: 28px; }
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+  align-items: center;
 }
 
-.tier2 { margin-top: 80px; }
-
-.tier2-list { border-top: 1px solid var(--border); }
-
-.tier2-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto auto;
-  gap: 24px;
-  align-items: center;
-  padding: 18px 4px;
-  border-bottom: 1px solid var(--border);
-  transition: all 200ms var(--ease-out);
+.filtro {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 9px 14px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--accent);
   cursor: pointer;
-  text-decoration: none;
+  transition: all 160ms var(--ease-out);
 }
-.tier2-row:hover {
-  background: linear-gradient(90deg, transparent, var(--accent-dim) 50%, transparent);
-  padding-left: 12px;
+.filtro:hover { border-color: var(--accent); }
+.filtro.ativo {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
 }
 
-.folder {
-  color: var(--text-muted);
-  display: grid;
-  place-items: center;
-  width: 22px;
+.contagem {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-left: 6px;
 }
-.tier2-row:hover .folder { color: var(--accent); }
 
-.tier2-name {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--text-primary);
+.lista {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--rule);
 }
-.tier2-stack {
-  font-family: var(--font-mono);
+
+.vazio {
+  padding: 48px 0;
+  font-family: var(--font-label);
   font-size: 12px;
-  color: var(--text-muted);
-}
-.tier2-link {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-secondary);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 180ms var(--ease-out);
-}
-.tier2-row:hover .tier2-link { color: var(--accent); }
-
-@media (max-width: 900px) {
-  .projects-grid { grid-template-columns: 1fr; }
-  .tier2-row { grid-template-columns: auto 1fr auto; }
-  .tier2-stack { grid-column: 2 / -1; grid-row: 2; font-size: 11px; }
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 </style>

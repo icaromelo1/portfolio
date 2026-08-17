@@ -1,59 +1,30 @@
 <template>
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>
-          Icaro Melo
-          <span class="sep">·</span>
-          2026
-          <span class="sep">·</span>
-          Fortaleza, CE
-        </div>
-        <div>
-          Feito com Vue 3
-          <span class="sep">·</span>
-          Quasar
-          <span class="sep">·</span>
-          Vercel
-        </div>
-      </div>
+  <footer class="rodape">
+    <div class="shell inner">
+      <span>Icaro Melo · Fortaleza / CE</span>
+      <span>Aberto a oportunidades</span>
+      <span class="fim">Vue 3 · Quasar · Vite</span>
     </div>
   </footer>
 </template>
 
 <style scoped>
-.footer {
-  border-top: 1px solid var(--border);
-  position: relative;
-  padding: 40px 0 48px;
-  margin-top: 80px;
+.rodape {
+  margin-top: clamp(48px, 6vw, 88px);
+  padding-bottom: clamp(48px, 6vw, 88px);
 }
-.footer::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  box-shadow: 0 0 12px var(--accent-glow);
-}
-
-.footer-inner {
+.inner {
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-muted);
+  gap: 12px 32px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
-
-.sep {
-  color: var(--text-muted);
-  opacity: 0.4;
-  margin: 0 8px;
-}
+.fim { margin-left: auto; }
+@media (max-width: 720px) { .fim { margin-left: 0; } }
 </style>
