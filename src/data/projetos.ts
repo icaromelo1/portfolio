@@ -163,7 +163,7 @@ export const projetos: Projeto[] = [
     stack: ['Vue 3', 'Quasar', 'Vite'],
     estado: 'Estável, em uso',
     repo: 'https://github.com/icaroMelo1/portfolio',
-    repoPublico: false,
+    repoPublico: true,
     noAr: 'https://icaromelodev.com.br',
   },
 ];
