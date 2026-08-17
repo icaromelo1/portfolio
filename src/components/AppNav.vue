@@ -1,15 +1,42 @@
 <template>
   <nav class="nav" aria-label="Navegação principal">
     <div class="nav-inner">
-      <a href="#topo" class="brand">Icaro Melo</a>
+      <a href="#topo" class="brand" @click="irPara($event, 'topo')">Icaro Melo</a>
       <div class="links">
-        <a href="#trabalho">Trabalho</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contato">Contato</a>
+        <a
+          v-for="item in secoes"
+          :key="item.id"
+          :href="`#${item.id}`"
+          @click="irPara($event, item.id)"
+          >{{ item.rotulo }}</a
+        >
       </div>
     </div>
   </nav>
 </template>
+
+<script setup lang="ts">
+const secoes = [
+  { id: 'trabalho', rotulo: 'Trabalho' },
+  { id: 'projetos', rotulo: 'Projetos' },
+  { id: 'contato', rotulo: 'Contato' },
+];
+
+/**
+ * A rota é carregada sob demanda, então o alvo pode não existir quando o
+ * navegador tenta rolar — e clicar no link do hash atual não dispara nada.
+ * Rolar no clique cobre os dois casos.
+ */
+function irPara(evento: MouseEvent, id: string) {
+  const alvo = document.getElementById(id);
+  if (!alvo) return;
+
+  evento.preventDefault();
+  const suave = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  alvo.scrollIntoView({ behavior: suave ? 'smooth' : 'auto', block: 'start' });
+  history.replaceState(null, '', `#${id}`);
+}
+</script>
 
 <style scoped>
 .nav {

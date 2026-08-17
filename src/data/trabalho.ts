@@ -56,9 +56,10 @@ export const experiencias: Experiencia[] = [
     resumo:
       'Desenvolvi e mantenho três sistemas internos: contratos, senhas e documentos. Participei de cada um desde o levantamento com quem ia usar até o deploy e a manutenção, o que significou aprender o procedimento antes de escrever a tela.',
     pontos: [
-      'Implementei a observabilidade do zero: rastreamento distribuído com OpenTelemetry e propagação de correlation ID, Elastic APM nas pontas e métricas em Prometheus. Antes disso, investigar um erro era ler log por log.',
-      'Projetei um sistema de filas com fila de mensagens mortas, repetição automática e workers concorrentes — persistido em banco, sem depender de broker externo. Menos peça na infraestrutura para manter de pé.',
-      'Construí um agente de hardware multiplataforma para impressoras térmicas: o navegador pede a impressão e um serviço local fala com o dispositivo, em tempo real. Resolveu sem depender de driver por sistema operacional.',
+      'Implementei a observabilidade do zero: rastreamento distribuído com OpenTelemetry e propagação de correlation ID, Elastic APM nas pontas e métricas em Prometheus. Antes disso, investigar um erro em produção era ler log por log.',
+      'Projetei um sistema de filas com fila de mensagens mortas, repetição automática e workers concorrentes — persistido no próprio banco, sem broker externo. Uma peça a menos de infraestrutura para manter de pé num órgão onde ninguém fica de plantão.',
+      'O sistema de senhas precisava imprimir em impressora térmica a partir do navegador, que não fala com hardware. Construí um agente que roda na máquina do atendimento e conversa com a página em tempo real — mesmo executável em Windows, macOS e Linux, sem instalar driver.',
+      'Autenticação corporativa com Keycloak e diretório da instituição, com papéis por perfil de usuário, e as esteiras de entrega até o Kubernetes para os três ambientes.',
     ],
     diagrama: {
       titulo: 'Três sistemas, uma base',
@@ -79,8 +80,8 @@ export const experiencias: Experiencia[] = [
       'Tive uma passagem como Tech Lead conduzindo quatro projetos ao mesmo tempo: revisão de código, arquitetura, alinhamento com clientes e planejamento. A parte difícil não era o código — era manter quatro frentes com prioridades diferentes avançando sem que uma decisão em uma inviabilizasse outra.',
     pontos: [
       'Reduzi uma consulta crítica de dois a três minutos para dez a quinze segundos, com indexação estratégica e reestruturação dos JOINs num banco relacional sob carga alta.',
-      'Implantei a cultura de testes do time, com testes de ponta a ponta e unitários, e o hábito de descrever o comportamento antes de implementar.',
-      'Orquestrei fluxos de processo complexos por uma ferramenta interna, em ciclos curtos de entrega.',
+      'Implantei a cultura de testes do time — ponta a ponta e unitários — e o hábito de descrever o comportamento esperado antes de escrever a implementação.',
+      'Orquestrei fluxos de processo de negócio complexos por uma ferramenta interna, atendendo clientes com regras bem diferentes entre si.',
     ],
     diagrama: {
       titulo: 'A consulta que travava',

@@ -18,19 +18,20 @@ export interface Projeto {
 /**
  * Fonte única dos projetos da vitrine.
  *
- * `repoPublico: false` esconde o link do repositório — vários ainda são privados
- * (etapa de liberação). Ao tornar um repositório público, basta virar a flag aqui.
+ * `repoPublico: false` esconde o link do repositório — vários ainda são privados.
+ * Ao tornar um repositório público, basta virar a flag aqui.
  *
- * As stacks foram conferidas contra o package.json / código de cada projeto.
+ * Cada descrição diz o problema e a decisão técnica que não era óbvia. Nada aqui
+ * expõe host, credencial ou desenho interno de sistema de cliente.
  */
 export const projetos: Projeto[] = [
   {
     id: 'kairos',
     nome: 'Kairos',
-    linha: 'Ambiente virtual gamificado onde se trabalha dentro de um mapa, ao lado de agentes de IA.',
+    linha: 'Espaço virtual multiusuário em pixel art, onde as pessoas se veem e conversam por proximidade.',
     descricao:
-      'Acompanhar agentes por texto não mostra o que eles fazem entre si. O estado do mundo virou a fonte de verdade e é ele que se desenha na tela; cada agente lê e escreve nesse estado, então dá para pausar e inspecionar sem parar tudo.',
-    stack: ['Vue 3', 'Quasar', 'PixiJS', 'NestJS', 'TypeORM', 'PostgreSQL'],
+      'Guardar os mapas num formato de editor de jogos resolveria rápido, e fecharia a porta principal: quem usa o espaço precisa poder montar o próprio. Os mundos viraram dados no banco, num formato meu, e o editor roda dentro do navegador lendo e escrevendo esse mesmo formato — sem ninguém precisar instalar nada.',
+    stack: ['Vue 3', 'Quasar', 'PixiJS', 'NestJS', 'TypeORM', 'PostgreSQL', 'Socket.IO', 'WebRTC'],
     estado: 'Em desenvolvimento',
     repo: 'https://github.com/icaroMelo1/kairosio',
     repoPublico: false,
@@ -39,34 +40,22 @@ export const projetos: Projeto[] = [
   {
     id: 'oraculo',
     nome: 'Oráculo',
-    linha: 'Chat que responde a partir de um acervo de documentos próprio, para consulta interna.',
+    linha: 'Assistente que responde sobre a minha infraestrutura de desenvolvimento, citando a fonte.',
     descricao:
-      'Resposta plausível sem fonte não serve para nada. A recuperação acontece antes da geração, e o modelo ganhou ferramentas para buscar o que não está indexado em vez de improvisar. Quando não encontra, diz que não encontrou.',
-    stack: ['NestJS', 'TypeScript', 'Vue 3', 'Quasar', 'RAG'],
+      'O caminho esperado era vetorizar tudo e buscar por similaridade. Não usei: o acervo é pequeno, curado e cheio de identificador exato — nome de método, código de tarefa — onde busca léxica acerta mais e não exige um segundo modelo rodando. Quando duas fontes discordam, a resposta diz que discordam em vez de escolher em silêncio.',
+    stack: ['NestJS', 'TypeScript', 'PostgreSQL', 'Vue 3', 'Quasar'],
     estado: 'Estável, em uso',
     repo: 'https://github.com/icaroMelo1/oraculo-api',
     repoPublico: false,
     noAr: 'https://icaromelodev.com.br/oraculo/',
   },
   {
-    id: 'brain',
-    nome: 'Brain Atlas',
-    linha: 'Visualizador que acende em tempo real enquanto um agente de IA raciocina.',
-    descricao:
-      'Gráfico gerado depois do fato não explica comportamento. O estado chega ao navegador por streaming e é desenhado quadro a quadro; a decisão menos óbvia foi aceitar descartar quadros quando a origem atrasa, porque leitura contínua importa mais que fidelidade absoluta.',
-    stack: ['Canvas 2D', 'SSE', 'Python', 'HTML'],
-    estado: 'Finalizado',
-    repo: 'https://github.com/icaroMelo1/brain-atlas',
-    repoPublico: true,
-    noAr: 'https://icaromelodev.com.br/brain',
-  },
-  {
     id: 'apply',
     nome: 'Apply',
-    linha: 'Busca e candidatura automatizada a vagas, feito para uso próprio.',
+    linha: 'Serviço que encontra vagas, monta o currículo sob medida para cada uma e se candidata sozinho.',
     descricao:
-      'Refazer a mesma triagem manualmente todo dia era desperdício. A coleta e a candidatura ficaram separadas por uma fila, de forma que quando um portal muda de layout só a coleta quebra — o histórico e as candidaturas seguem intactos.',
-    stack: ['TypeScript', 'Playwright', 'Drizzle', 'SQLite', 'Nuxt 4'],
+      'A parte difícil não foi preencher formulário: foi decidir quando não preencher. O serviço monta o currículo no idioma da vaga e responde só o que está documentado sobre mim — sem respaldo, ele para e pede revisão em vez de inventar. Em pergunta de autodeclaração, declina quando há a opção; quando é obrigatória e não há saída, descarta a vaga inteira.',
+    stack: ['TypeScript', 'Playwright', 'Drizzle', 'SQLite', 'Nuxt 4', 'Quasar'],
     estado: 'Estável, em uso',
     repo: 'https://github.com/icaroMelo1/apply-service',
     repoPublico: false,
@@ -75,30 +64,54 @@ export const projetos: Projeto[] = [
   {
     id: 'escritorio',
     nome: 'Escritório',
-    linha: 'Troca de mensagens ponto a ponto entre sessões de agente na mesma máquina.',
+    linha: 'Correio ponto a ponto entre sessões de agente, para que uma consulte a outra sem intermediário.',
     descricao:
-      'Duas sessões trabalhando no mesmo problema não tinham como se falar sem um servidor no meio. Optei por caixa de entrada em arquivo, com entrega assíncrona: quem está ocupado lê depois, e nada se perde se uma sessão morrer.',
-    stack: ['TypeScript', 'MCP', 'Node'],
+      'A saída óbvia era um orquestrador central mandando em todo mundo. Preferi não ter dono: o correio carrega só duas regras — cada mensagem repassada gasta um salto, e quem abriu a conversa é quem a encerra. Isso basta para não haver laço infinito. Ao fechar, o colega destila o que aprendeu num arquivo de texto legível, então a memória de longo prazo dá para ler e corrigir à mão.',
+    stack: ['TypeScript', 'MCP', 'Node.js'],
     estado: 'Em desenvolvimento',
     repoPublico: false,
   },
   {
+    id: 'brain',
+    nome: 'Brain Atlas',
+    linha: 'Visualizador que acende em tempo real enquanto um agente de IA raciocina.',
+    descricao:
+      'Gráfico montado depois do fato não explica comportamento — mostra o resultado, não o percurso. O estado sai por um fluxo de eventos e é desenhado enquanto acontece; quando a origem atrasa, quadros são descartados de propósito, porque leitura contínua vale mais do que ver todos os passos.',
+    stack: ['Canvas 2D', 'SSE', 'Python', 'HTML'],
+    estado: 'Finalizado',
+    repo: 'https://github.com/icaroMelo1/brain-atlas',
+    repoPublico: true,
+    noAr: 'https://icaromelodev.com.br/brain',
+  },
+  {
     id: 'claudicaro',
     nome: 'Claudicaro CLI',
-    linha: 'Aplicativo de desktop para operar vários modelos de IA na mesma tarefa.',
+    linha: 'Aplicativo de desktop que opera várias ferramentas de IA de linha de comando na mesma conversa.',
     descricao:
-      'Alternar entre janelas fazia perder o fio do que já tinha sido tentado. O histórico ficou fora do provedor, num formato próprio, então trocar de modelo no meio de uma tarefa não recomeça o contexto.',
-    stack: ['Electron', 'Vue 3', 'Quasar', 'TypeScript', 'Prisma', 'SQLite'],
+      'Cada ferramenta guarda a própria sessão e não conhece as outras, então trocar no meio de uma tarefa recomeçava o raciocínio do zero. O histórico passou a viver do meu lado, em banco local: quando uma falha ou não é a melhor para o pedido, a próxima recebe o contexto já acumulado e continua de onde parou.',
+    stack: ['Electron', 'Vue 3', 'Quasar', 'TypeScript', 'Prisma', 'SQLite', 'Vitest'],
     estado: 'Em desenvolvimento',
     repo: 'https://github.com/icaroMelo1/claudicaro-cli',
     repoPublico: false,
+  },
+  {
+    id: 'minecraft',
+    nome: 'Servidor sob demanda',
+    linha: 'Servidor de jogo que dorme sozinho e acorda quando alguém entra, com bot de operação no Discord.',
+    descricao:
+      'Manter a máquina ligada o tempo todo para um servidor usado à noite é desperdício, mas acordar a cada batida de porta é pior: varredores automáticos batem o dia inteiro. Só quem está na lista de permissão consegue acordar a máquina. E o backup é disparado pelo próprio evento de desligamento, o que garante que a última sessão jogada sempre entra na cópia.',
+    stack: ['TypeScript', 'Node.js', 'Docker', 'RCON', 'systemd'],
+    estado: 'Estável, em uso',
+    repo: 'https://github.com/icaroMelo1/discord-bots',
+    repoPublico: false,
+    noAr: 'https://icaromelodev.com.br/minecraft/map/',
   },
   {
     id: 'wildpie',
     nome: 'Wild Pie',
     linha: 'Emissão de nota fiscal de serviço para quem é MEI e emite sempre a mesma coisa.',
     descricao:
-      'O portal público não tem integração, então a automação dirige o navegador. Como o layout muda sem aviso, cada passo verifica o que encontrou antes de seguir e para com erro claro em vez de emitir errado.',
+      'O portal público não oferece integração, então a automação dirige o navegador — e o layout muda sem aviso. Cada passo confere o que encontrou antes de seguir e para com erro explícito em vez de continuar no escuro. Numa automação fiscal, falhar alto é o comportamento correto: emitir errado custa mais do que não emitir.',
     stack: ['NestJS', 'Playwright', 'Vue 3', 'Quasar', 'TypeORM', 'SQLite'],
     estado: 'Em desenvolvimento',
     repoPublico: false,
@@ -106,32 +119,20 @@ export const projetos: Projeto[] = [
   {
     id: 'psi',
     nome: 'Landing de psicologia clínica',
-    linha: 'Página de apresentação e agendamento para consultório particular.',
+    linha: 'Página de apresentação e contato para consultório particular.',
     descricao:
-      'O consultório não tinha quem mantivesse um site. Entreguei conteúdo estático com o texto em arquivo editável e sistema de temas trocável, de modo que uma alteração de horário não passe por mim.',
+      'A cliente não tem quem mantenha um site, e um painel de administração seria peso morto para uma página só. O conteúdo ficou num arquivo de texto e a identidade num sistema de temas trocáveis, então mudar horário ou trocar a paleta inteira não exige me chamar nem mexer em componente.',
     stack: ['Vue 3', 'Quasar', 'Vite'],
     estado: 'Finalizado',
     repoPublico: false,
     noAr: 'https://icaromelodev.com.br/referencia-projeto-psicologo/',
   },
   {
-    id: 'minecraft',
-    nome: 'Guardian & mapa de servidor',
-    linha: 'Bot de operação e mapa navegável de um mundo de Minecraft, para quem joga nele.',
-    descricao:
-      'Renderizar o mundo inteiro a cada visita era caro e desnecessário. A geração passou a ser em ladrilhos, calculados uma vez e servidos como imagem estática, então o navegador só pede o pedaço que está na tela.',
-    stack: ['Node.js', 'TypeScript', 'mineflayer', 'RCON', 'Docker'],
-    estado: 'Estável, em uso',
-    repo: 'https://github.com/icaroMelo1/discord-bots',
-    repoPublico: false,
-    noAr: 'https://icaromelodev.com.br/minecraft/map/',
-  },
-  {
     id: 'wallet',
     nome: 'Personal Wallet',
-    linha: 'Ponto de partida de backend para projetos que precisam de login.',
+    linha: 'Base de backend autenticado, ponto de partida para projetos que precisam de login.',
     descricao:
-      'Repetia a mesma configuração de autenticação a cada projeto novo. Deixei métricas expostas desde o primeiro commit, porque acrescentar observabilidade depois sempre custa mais do que parece.',
+      'Eu repetia a mesma configuração de autenticação a cada projeto novo. Deixei as métricas expostas desde o primeiro commit, porque acrescentar observabilidade depois sempre custa mais do que parece — e é exatamente o que se corta quando o prazo aperta.',
     stack: ['NestJS', 'JWT', 'TypeORM', 'MySQL', 'Prometheus'],
     estado: 'Finalizado',
     repo: 'https://github.com/icaroMelo1/personal-wallet',
@@ -140,19 +141,19 @@ export const projetos: Projeto[] = [
   {
     id: 'barrel',
     nome: 'Barrel',
-    linha: 'Aplicativo macOS nativo para rodar jogos de Windows via Wine.',
+    linha: 'Aplicativo macOS nativo para rodar jogos de Windows, feito porque os que eu usava morreram.',
     descricao:
-      'Comecei para aprender a plataforma pelo caminho difícil, sem camada web — gerência de prefixos do Wine, download de builds e instalação, tudo em SwiftUI. Está pausado: o que eu queria entender sobre ciclo de vida e persistência do sistema já ficou claro.',
+      'Comecei quando o programa que eu usava foi descontinuado e as alternativas ou eram de outro sistema ou estavam abandonadas. Fiz nativo de propósito, sem camada web, para aprender a plataforma pelo caminho difícil. Está pausado num problema honesto: o cliente de jogos abre com a janela em branco, e a causa é o processo gráfico dele falhando em silêncio sob a camada de compatibilidade.',
     stack: ['Swift', 'SwiftUI', 'Wine'],
     estado: 'Pausado',
     repoPublico: false,
   },
   {
     id: 'site',
-    nome: 'icaromelodev.com.br',
-    linha: 'Este site: portfólio próprio, escrito e mantido por mim.',
+    nome: 'Este site',
+    linha: 'Portfólio próprio, escrito e mantido por mim.',
     descricao:
-      'A versão anterior listava tecnologias e não mostrava trabalho. Refiz a partir do conteúdo: cada projeto tem a mesma anatomia e o estado dito na frente, o que me obriga a manter a informação honesta em vez de deixar tudo parecer pronto.',
+      'A versão anterior listava tecnologias e não mostrava trabalho nenhum. Refiz a partir do conteúdo: todo projeto tem a mesma anatomia e o estado dito na frente, inclusive quando o estado é "pausado". Dizer o que não está de pé é o que dá crédito ao que está.',
     stack: ['Vue 3', 'Quasar', 'Vite'],
     estado: 'Estável, em uso',
     repo: 'https://github.com/icaroMelo1/portfolio',
