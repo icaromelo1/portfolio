@@ -89,7 +89,7 @@ const tier1 = [
     status: 'dev' as const,
     accent: 'coral' as const,
     isPrivate: true,
-    githubUrl: 'https://github.com/icaroMelo1/claudicaro-cli',
+    detailRoute: '/claudicaro',
   },
   {
     index: '02', category: 'fullstack · gamified',
@@ -98,8 +98,7 @@ const tier1 = [
     stack: ['Vue 3', 'Quasar', 'NestJS', 'TypeORM', 'PostgreSQL', 'PixiJS'],
     status: 'dev' as const,
     accent: 'purple' as const,
-    githubUrl: 'https://github.com/icaroMelo1/kairosio',
-    demoSoon: true,
+    liveUrl: '/kairos',
   },
   {
     index: '03', category: 'viz · realtime',
@@ -108,8 +107,7 @@ const tier1 = [
     stack: ['HTML', 'Canvas2D', 'Python', 'SSE'],
     status: 'active' as const,
     accent: 'mint' as const,
-    githubUrl: 'https://github.com/icaroMelo1/brain-atlas',
-    demoUrl: 'https://github.com/icaroMelo1/brain-atlas',
+    liveUrl: '/brain',
   },
   {
     index: '04', category: 'automação · gov.br',
@@ -119,6 +117,7 @@ const tier1 = [
     status: 'dev' as const,
     accent: 'gold' as const,
     isPrivate: true,
+    liveUrl: '/wild',
   },
 ]
 </script>

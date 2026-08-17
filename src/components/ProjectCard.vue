@@ -1,5 +1,5 @@
 <template>
-  <article class="project-card" :data-accent="accent">
+  <component :is="rootTag" v-bind="rootProps" class="project-card" :class="{ clickable: isLink }" :data-accent="accent">
     <div class="project-index">{{ index }} / {{ category }}</div>
     <div class="project-header">
       <h3 class="project-name">{{ title }}<span class="arrow">↗</span></h3>
@@ -10,30 +10,17 @@
       <span v-for="tag in stack" :key="tag" class="tag">{{ tag }}</span>
     </div>
     <div class="project-links">
-      <template v-if="isPrivate">
-        <a href="#" class="project-link disabled" aria-disabled="true">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Repo privado
-        </a>
-      </template>
-      <a v-if="githubUrl && !isPrivate" :href="githubUrl" target="_blank" rel="noopener" class="project-link">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.79 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.41 1.02.01 2.04.14 3 .41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.22.7.83.58C20.57 21.79 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a v-if="githubUrl && isPrivate" :href="githubUrl" target="_blank" rel="noopener" class="project-link">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.79 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.41 1.02.01 2.04.14 3 .41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.22.7.83.58C20.57 21.79 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        Ver no GitHub ↗
-      </a>
-      <a v-if="demoUrl" :href="demoUrl" target="_blank" rel="noopener" class="project-link">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14L21 3"/><path d="M21 14v7H3V3h7"/></svg>
-        Demo ao vivo
-      </a>
-      <a v-if="demoSoon" href="#" class="project-link">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-        Demo (em breve)
-      </a>
+      <span class="project-link project-link-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        {{ ctaLabel }}
+      </span>
+      <span class="links-spacer" />
+      <span v-if="isPrivate" class="project-link project-link-muted disabled">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Código privado
+      </span>
     </div>
-  </article>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -48,10 +35,18 @@ const props = defineProps<{
   status: 'dev' | 'active' | 'done'
   accent: 'coral' | 'purple' | 'mint' | 'gold'
   isPrivate?: boolean
-  githubUrl?: string
-  demoUrl?: string
-  demoSoon?: boolean
+  liveUrl?: string       // app/landing ao vivo (mesmo domínio, ex.: /kairos)
+  detailRoute?: string   // rota interna do portfolio (ex.: /claudicaro)
 }>()
+
+const isLink = computed(() => !!(props.detailRoute || props.liveUrl))
+const rootTag = computed(() => (props.detailRoute ? 'router-link' : props.liveUrl ? 'a' : 'article'))
+const rootProps = computed(() => {
+  if (props.detailRoute) return { to: props.detailRoute }
+  if (props.liveUrl) return { href: props.liveUrl }
+  return {}
+})
+const ctaLabel = computed(() => (props.detailRoute ? 'Conhecer o projeto' : 'Ver ao vivo'))
 
 const statusMap = {
   dev:    { label: 'em desenvolvimento', cls: 'status-dev' },
@@ -83,7 +78,10 @@ const statusClass = computed(() => statusMap[props.status].cls)
   display: flex;
   flex-direction: column;
   min-height: 260px;
+  text-decoration: none;
+  color: inherit;
 }
+.project-card.clickable { cursor: pointer; }
 
 /* corner gradient */
 .project-card::before {
@@ -243,11 +241,13 @@ const statusClass = computed(() => statusMap[props.status].cls)
 
 .project-links {
   display: flex;
+  align-items: center;
   gap: 18px;
   padding-top: 18px;
   border-top: 1px solid var(--border);
   margin-top: auto;
 }
+.links-spacer { flex: 1; }
 .project-link {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -256,12 +256,12 @@ const statusClass = computed(() => statusMap[props.status].cls)
   align-items: center;
   gap: 6px;
   transition: color 180ms var(--ease-out);
-  text-decoration: none;
 }
-.project-link:hover { color: var(--card-accent); }
-.project-link.disabled {
-  color: var(--text-muted);
-  pointer-events: none;
-  opacity: 0.55;
+.project-link-primary {
+  color: var(--card-accent);
+  font-weight: 500;
 }
+.project-card:hover .project-link-primary { filter: brightness(1.15); }
+.project-link-muted { color: var(--text-muted); }
+.project-link.disabled { opacity: 0.7; }
 </style>
