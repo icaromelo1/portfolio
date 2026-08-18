@@ -165,6 +165,7 @@ export const projetos: Projeto[] = [
     repo: 'https://github.com/icaroMelo1/portfolio',
     repoPublico: true,
     noAr: 'https://icaromelodev.com.br',
+    imagem: '/projetos/site.jpg',
   },
 ];
 
