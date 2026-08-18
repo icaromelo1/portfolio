@@ -62,6 +62,7 @@ export const projetos: Projeto[] = [
     repo: 'https://github.com/icaroMelo1/apply-service',
     repoPublico: true,
     noAr: 'https://apply.icaromelodev.com.br',
+    imagem: '/projetos/apply.svg',
   },
   {
     id: 'escritorio',
@@ -73,6 +74,7 @@ export const projetos: Projeto[] = [
     estado: 'Em desenvolvimento',
     repo: 'https://github.com/icaroMelo1/escritorio',
     repoPublico: true,
+    imagem: '/projetos/escritorio.svg',
   },
   {
     id: 'brain',
@@ -97,6 +99,7 @@ export const projetos: Projeto[] = [
     estado: 'Em desenvolvimento',
     repo: 'https://github.com/icaroMelo1/claudicaro-cli',
     repoPublico: true,
+    imagem: '/projetos/claudicaro.svg',
   },
   {
     id: 'minecraft',
@@ -108,6 +111,7 @@ export const projetos: Projeto[] = [
     estado: 'Estável, em uso',
     repo: 'https://github.com/icaroMelo1/discord-bots',
     repoPublico: true,
+    imagem: '/projetos/minecraft.svg',
   },
   {
     id: 'wildpie',
@@ -118,6 +122,7 @@ export const projetos: Projeto[] = [
     stack: ['NestJS', 'Playwright', 'Vue 3', 'Quasar', 'TypeORM', 'SQLite'],
     estado: 'Em desenvolvimento',
     repoPublico: false,
+    imagem: '/projetos/wildpie.svg',
   },
   {
     id: 'psi',
@@ -142,6 +147,7 @@ export const projetos: Projeto[] = [
     estado: 'Finalizado',
     repo: 'https://github.com/icaroMelo1/personal-wallet',
     repoPublico: true,
+    imagem: '/projetos/wallet.svg',
   },
   {
     id: 'barrel',
@@ -153,6 +159,7 @@ export const projetos: Projeto[] = [
     estado: 'Pausado',
     repo: 'https://github.com/icaroMelo1/barrel',
     repoPublico: true,
+    imagem: '/projetos/barrel.svg',
   },
   {
     id: 'site',
