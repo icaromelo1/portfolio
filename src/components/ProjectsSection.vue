@@ -4,7 +4,7 @@
       <h2 class="label">Projetos</h2>
       <div>
         <p class="band-lede">
-          Onze projetos próprios, cada um com o estado declarado.
+          Doze projetos próprios, cada um com o estado declarado, inclusive os encerrados.
         </p>
 
         <div class="barra" role="group" aria-label="Filtrar projetos por estado">

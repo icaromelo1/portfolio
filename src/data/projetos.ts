@@ -1,4 +1,9 @@
-export type Estado = 'Estável, em uso' | 'Em desenvolvimento' | 'Finalizado' | 'Pausado';
+export type Estado =
+  | 'Estável, em uso'
+  | 'Em desenvolvimento'
+  | 'Finalizado'
+  | 'Pausado'
+  | 'Descontinuado';
 
 export interface Projeto {
   id: string;
@@ -7,6 +12,8 @@ export interface Projeto {
   descricao: string;
   stack: string[];
   estado: Estado;
+  /** Achados relevantes, exibidos como lista quando o projeto merece tratamento de caso. */
+  achados?: string[];
   /** URL do repositório. Só é renderizada quando `repoPublico` for true. */
   repo?: string;
   repoPublico: boolean;
@@ -150,6 +157,24 @@ export const projetos: Projeto[] = [
     imagem: '/projetos/wallet.svg',
   },
   {
+    id: 'barrel',
+    nome: 'Barrel',
+    linha: 'Aplicativo macOS nativo para execução de jogos de Windows, encerrado após diagnóstico do motor.',
+    descricao:
+      'A interface e os serviços foram concluídos: download da build do Wine, criação e administração de prefixos, instalação de lojas e biblioteca de jogos. Concluída essa etapa, testei o motor empiricamente, com prefixos reais e instalação de clientes, em vez de validar por leitura de código. Os defeitos encontrados são do próprio motor e não admitem contorno por configuração.',
+    achados: [
+      'A Steam completa o handshake com o servidor, mas tem o login rejeitado de forma consistente. Reproduzido em prefixos independentes, incluindo instalação do zero.',
+      'O launcher da Battle.net entra em deadlock na criação de memória compartilhada nomeada e nunca cria janela. A correção documentada pela comunidade foi testada e não alterou o comportamento.',
+      'Descartei a camada de renderização como causa: aplicativos do próprio Wine desenham corretamente no mesmo prefixo. Descartei também a tradução por Rosetta 2, já que produtos comerciais equivalentes operam sobre ela.',
+      'A alternativa avaliada, baseada no Apple Game Porting Toolkit, está especificada mas não implementada. Se resolve os defeitos é verificação empírica pendente, não premissa.',
+    ],
+    stack: ['Swift', 'SwiftUI', 'Wine'],
+    estado: 'Descontinuado',
+    repo: 'https://github.com/icaroMelo1/barrel',
+    repoPublico: true,
+    imagem: '/projetos/barrel.svg',
+  },
+  {
     id: 'site',
     nome: 'Este site',
     linha: 'Portfólio pessoal, desenvolvido e mantido por mim.',
@@ -169,4 +194,5 @@ export const estados: Estado[] = [
   'Em desenvolvimento',
   'Finalizado',
   'Pausado',
+  'Descontinuado',
 ];

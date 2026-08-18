@@ -16,6 +16,13 @@
       <h3>{{ projeto.nome }}</h3>
       <p class="linha">{{ projeto.linha }}</p>
       <p class="descricao">{{ projeto.descricao }}</p>
+
+      <ul v-if="projeto.achados" class="achados">
+        <li v-for="(achado, i) in projeto.achados" :key="i">
+          <span class="marca" aria-hidden="true">·</span>
+          <span>{{ achado }}</span>
+        </li>
+      </ul>
       <p class="stack">{{ projeto.stack.join(' · ') }}</p>
     </div>
 
@@ -43,6 +50,7 @@ const classeEstado = computed(
       'Em desenvolvimento': 'tag-dev',
       Finalizado: 'tag-final',
       Pausado: 'tag-pausa',
+      Descontinuado: 'tag-fim',
     })[props.projeto.estado],
 );
 </script>
@@ -91,6 +99,26 @@ h3 {
   line-height: 1.6;
   max-width: 62ch;
 }
+
+.achados {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 62ch;
+}
+.achados li {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 8px;
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.achados .marca { color: var(--accent); }
 
 .stack {
   margin-top: 20px;
