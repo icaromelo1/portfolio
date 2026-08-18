@@ -14,13 +14,13 @@
     </div>
 
     <div>
-      <h1>Gosto do trabalho que começa depois do deploy.</h1>
+      <h1>O trabalho que importa começa depois do deploy.</h1>
 
       <p class="lede">
-        Sou Icaro, desenvolvedor full stack há cinco anos, com backend como ponto
-        forte. A maior parte do que faço é entrar em sistemas que já existem,
-        entender como funcionam de verdade e mexer neles sem quebrar o que
-        estava de pé.
+        Desenvolvedor full stack há cinco anos, com atuação predominante em
+        backend. A maior parte do meu trabalho consiste em intervir em sistemas
+        já em operação: compreender seu funcionamento real antes de alterá-lo e
+        preservar o comportamento existente.
       </p>
 
       <dl class="marcadores">
@@ -40,7 +40,7 @@
         </div>
         <div class="marcador">
           <dt class="label-sm">Disponibilidade</dt>
-          <dd>Aberto a oportunidades. <a href="#contato">Falar comigo</a>.</dd>
+          <dd>Aberto a oportunidades. <a href="#contato">Entrar em contato</a>.</dd>
         </div>
       </dl>
     </div>
@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-// Quando houver retrato, aponte para o arquivo em `public/`.
+// Quando houver retrato, apontar para o arquivo em `public/`.
 // Ex.: const retrato = '/retrato.jpg'
 const retrato = '';
 </script>

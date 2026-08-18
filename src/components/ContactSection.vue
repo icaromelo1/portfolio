@@ -3,11 +3,11 @@
     <h2 class="label">Contato</h2>
     <div>
       <p class="band-lede">
-        Se algum destes casos parecer com o seu problema, me escreva.
+        Se algum destes casos corresponder ao seu problema, entre em contato.
       </p>
       <p class="corpo">
-        Respondo por e-mail. Se preferir olhar meu histórico primeiro, o LinkedIn
-        está aqui do lado. Condições e detalhes a gente alinha na conversa.
+        Respondo por e-mail. O LinkedIn e o GitHub estão disponíveis para consulta
+        prévia ao histórico. Escopo, formato e condições são definidos na conversa.
       </p>
 
       <div class="acoes">
@@ -45,7 +45,7 @@ async function copiar() {
   try {
     await navigator.clipboard.writeText(email);
   } catch {
-    // Sem permissão de área de transferência — o link mailto continua valendo.
+    // Sem permissão de área de transferência. O link mailto permanece válido.
   }
   copiado.value = true;
   clearTimeout(timer);

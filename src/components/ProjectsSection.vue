@@ -4,7 +4,7 @@
       <h2 class="label">Projetos</h2>
       <div>
         <p class="band-lede">
-          Doze projetos meus, com o estado de cada um dito na frente.
+          Onze projetos próprios, cada um com o estado declarado.
         </p>
 
         <div class="barra" role="group" aria-label="Filtrar projetos por estado">

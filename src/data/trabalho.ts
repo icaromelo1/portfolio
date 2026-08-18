@@ -11,7 +11,7 @@ export interface Diagrama {
 
 export interface Experiencia {
   id: string;
-  /** Coluna de rótulo, três linhas. A do meio recebe o acento. */
+  /** Coluna de rótulo, três linhas. A intermediária recebe o acento. */
   rotulo: [string, string, string];
   titulo: string;
   resumo: string;
@@ -21,10 +21,10 @@ export interface Experiencia {
 
 /**
  * Regras de conteúdo aplicadas aqui:
- * — sem tamanho de equipe;
- * — sem contagem do desenho interno do cliente (nº de microsserviços, tabelas, filas);
- * — afirmações de liderança sempre datadas com "atualmente";
- * — cada resultado atribuído à empresa onde de fato aconteceu.
+ * Sem tamanho de equipe.
+ * Sem contagem do desenho interno do cliente (microsserviços, tabelas, filas).
+ * Afirmações de liderança sempre datadas com "atualmente".
+ * Cada resultado atribuído à organização em que ocorreu.
  */
 export const experiencias: Experiencia[] = [
   {
@@ -32,11 +32,11 @@ export const experiencias: Experiencia[] = [
     rotulo: ['Atualmente', 'Saúde ocupacional', 'API central'],
     titulo: 'Plataforma de saúde ocupacional',
     resumo:
-      'Atualmente sou o principal desenvolvedor da API central — o serviço pelo qual os outros passam para ler e escrever dados clínicos e administrativos. É uma arquitetura distribuída em microsserviços, com mensageria assíncrona entre as partes que não precisam de resposta imediata.',
+      'Atualmente sou o principal desenvolvedor da API central, serviço pelo qual os demais passam para ler e gravar dados clínicos e administrativos. A arquitetura é distribuída em microsserviços, com mensageria assíncrona entre as partes que dispensam resposta imediata.',
     pontos: [
-      'A maior parte do meu trabalho é sustentação: entrar num sistema que já existe, entender como ele funciona de verdade e mexer sem derrubar o que estava de pé.',
+      'A maior parte da minha atuação é de sustentação: intervir em um sistema já em operação, compreender seu funcionamento real e alterá-lo preservando o comportamento existente.',
       'Diagnostiquei uma condição de corrida em produção que gerava registros duplicados de forma intermitente. Documentei com linha do tempo e evidências, e resolvi com restrição de unicidade no banco mais idempotência nas guardas.',
-      'Montei um ecossistema de agentes de IA para o time — um orquestrador e especialistas de domínio, com memória em dois níveis. É ferramenta interna de desenvolvimento, não recurso de produto.',
+      'Estruturei um ecossistema de agentes de IA para a equipe, composto por um orquestrador e especialistas de domínio, com memória em dois níveis. A ferramenta é de uso interno da equipe e não integra funcionalidades do produto.',
     ],
     diagrama: {
       titulo: 'Como o dado atravessa',
@@ -46,7 +46,7 @@ export const experiencias: Experiencia[] = [
         { texto: 'Fila' },
         { texto: 'Serviços de domínio' },
       ],
-      nota: 'o que não precisa de resposta imediata sai pela fila',
+      nota: 'o que dispensa resposta imediata segue pela fila',
     },
   },
   {
@@ -54,12 +54,12 @@ export const experiencias: Experiencia[] = [
     rotulo: ['Judiciário', 'TJ do Amazonas', 'Do desenho ao deploy'],
     titulo: 'Tribunal de Justiça do Amazonas',
     resumo:
-      'Desenvolvi e mantenho três sistemas internos: contratos, senhas e documentos. Participei de cada um desde o levantamento com quem ia usar até o deploy e a manutenção, o que significou aprender o procedimento antes de escrever a tela.',
+      'Desenvolvi e mantenho três sistemas internos: contratos, senhas e documentos. Participei de cada um desde o levantamento junto aos usuários até o deploy e a manutenção, com o procedimento administrativo compreendido antes do projeto da interface.',
     pontos: [
-      'Implementei a observabilidade do zero: rastreamento distribuído com OpenTelemetry e propagação de correlation ID, Elastic APM nas pontas e métricas em Prometheus. Antes disso, investigar um erro em produção era ler log por log.',
-      'Projetei um sistema de filas com fila de mensagens mortas, repetição automática e workers concorrentes — persistido no próprio banco, sem broker externo. Uma peça a menos de infraestrutura para manter de pé num órgão onde ninguém fica de plantão.',
-      'O sistema de senhas precisava imprimir em impressora térmica a partir do navegador, que não fala com hardware. Construí um agente que roda na máquina do atendimento e conversa com a página em tempo real — mesmo executável em Windows, macOS e Linux, sem instalar driver.',
-      'Autenticação corporativa com Keycloak e diretório da instituição, com papéis por perfil de usuário, e as esteiras de entrega até o Kubernetes para os três ambientes.',
+      'Implementei a observabilidade dos sistemas: rastreamento distribuído com OpenTelemetry e propagação de correlation ID, Elastic APM nas extremidades e métricas em Prometheus. Até então, a investigação de incidentes em produção dependia da leitura sequencial de registros.',
+      'Projetei um sistema de filas com fila de mensagens mortas, repetição automática e workers concorrentes, persistido no próprio banco e sem dependência de broker externo, reduzindo um componente de infraestrutura em ambiente sem equipe de plantão.',
+      'O sistema de senhas exigia impressão em equipamento térmico a partir do navegador, que não acessa hardware diretamente. Desenvolvi um agente executado na máquina de atendimento, em comunicação com a página em tempo real, distribuído como executável único para Windows, macOS e Linux e sem necessidade de driver.',
+      'Integrei a autenticação corporativa com Keycloak e o diretório da instituição, com papéis atribuídos por perfil de usuário, além das esteiras de entrega até o Kubernetes nos três ambientes.',
     ],
     diagrama: {
       titulo: 'Três sistemas, uma base',
@@ -69,7 +69,7 @@ export const experiencias: Experiencia[] = [
         { texto: 'Documentos' },
         { texto: 'Autenticação e auditoria comuns', forte: true },
       ],
-      nota: 'os três continuam em uso — migração de dados importa',
+      nota: 'os três seguem em uso; migração de dados é requisito',
     },
   },
   {
@@ -77,10 +77,10 @@ export const experiencias: Experiencia[] = [
     rotulo: ['Passagem', 'Tech Lead', 'Quatro frentes'],
     titulo: 'Condução técnica',
     resumo:
-      'Tive uma passagem como Tech Lead conduzindo quatro projetos ao mesmo tempo: revisão de código, arquitetura, alinhamento com clientes e planejamento. A parte difícil não era o código — era manter quatro frentes com prioridades diferentes avançando sem que uma decisão em uma inviabilizasse outra.',
+      'Atuei como Tech Lead conduzindo quatro projetos simultâneos, com responsabilidade sobre revisão de código, arquitetura, alinhamento com clientes e planejamento. A principal dificuldade estava em manter quatro frentes de prioridades distintas avançando sem que uma decisão em uma delas inviabilizasse outra.',
     pontos: [
       'Reduzi uma consulta crítica de dois a três minutos para dez a quinze segundos, com indexação estratégica e reestruturação dos JOINs num banco relacional sob carga alta.',
-      'Implantei a cultura de testes do time — ponta a ponta e unitários — e o hábito de descrever o comportamento esperado antes de escrever a implementação.',
+      'Implantei a cultura de testes da equipe, cobrindo testes unitários e de ponta a ponta, e a prática de descrever o comportamento esperado antes da implementação.',
       'Orquestrei fluxos de processo de negócio complexos por uma ferramenta interna, atendendo clientes com regras bem diferentes entre si.',
     ],
     diagrama: {

@@ -1,6 +1,6 @@
 :root {
   /* ── superfícies ─────────────────────────────────── */
-  --paper:      #F4F0E8;  /* fundo — papel quente */
+  --paper:      #F4F0E8;  /* fundo, papel quente */
   --paper-soft: #EFEADF;  /* blocos de diagrama */
   --paper-veil: rgba(244, 240, 232, 0.94);
 
@@ -16,7 +16,7 @@
   --ink-label: #6B6660;
   --ink-faint: #8A8377;
 
-  /* ── acento — vinho ──────────────────────────────── */
+  /* ── acento, vinho ──────────────────────────────── */
   --accent:      #7A2233;
   --accent-deep: #4F1520;
   --accent-line: rgba(122, 34, 51, 0.3);

@@ -23,9 +23,9 @@ const secoes = [
 ];
 
 /**
- * A rota é carregada sob demanda, então o alvo pode não existir quando o
- * navegador tenta rolar — e clicar no link do hash atual não dispara nada.
- * Rolar no clique cobre os dois casos.
+ * A rota é carregada sob demanda, portanto o alvo pode não existir quando o
+ * navegador tenta rolar. Clicar no link do hash atual também não dispara
+ * navegação. Rolar no clique cobre os dois casos.
  */
 function irPara(evento: MouseEvent, id: string) {
   const alvo = document.getElementById(id);

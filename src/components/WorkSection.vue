@@ -21,7 +21,7 @@
 
           <ul class="pontos">
             <li v-for="(ponto, i) in exp.pontos" :key="i">
-              <span class="marca" aria-hidden="true">—</span>
+              <span class="marca" aria-hidden="true">·</span>
               <span>{{ ponto }}</span>
             </li>
           </ul>
