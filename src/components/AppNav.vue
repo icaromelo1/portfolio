@@ -19,6 +19,7 @@
 const secoes = [
   { id: 'trabalho', rotulo: 'Trabalho' },
   { id: 'projetos', rotulo: 'Projetos' },
+  { id: 'interface', rotulo: 'Interface' },
   { id: 'contato', rotulo: 'Contato' },
 ];
 

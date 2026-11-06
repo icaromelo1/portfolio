@@ -2,105 +2,103 @@
   <section id="projetos" class="band">
     <div class="spread cabeca">
       <h2 class="label">Projetos</h2>
-      <div>
-        <p class="band-lede">
-          Doze projetos próprios, cada um com o estado declarado, inclusive os encerrados.
-        </p>
-
-        <div class="barra" role="group" aria-label="Filtrar projetos por estado">
-          <button
-            v-for="opcao in opcoes"
-            :key="opcao"
-            type="button"
-            class="filtro"
-            :class="{ ativo: filtro === opcao }"
-            :aria-pressed="filtro === opcao"
-            @click="filtro = opcao"
-          >
-            {{ opcao }}
-          </button>
-          <span class="contagem" aria-live="polite">
-            {{ visiveis.length }} de {{ projetos.length }}
-          </span>
-        </div>
-      </div>
+      <p class="band-lede">
+        Projetos próprios, cada um com o estado em que realmente está.
+      </p>
     </div>
 
-    <div class="lista">
-      <ProjectCard v-for="p in visiveis" :key="p.id" :projeto="p" />
+    <div class="destaques">
+      <ProjectCard v-for="p in destaques" :key="p.id" :projeto="p" />
     </div>
 
-    <p v-if="!visiveis.length" class="vazio">Nenhum projeto com esse estado.</p>
+    <div class="spread outros">
+      <h3 class="label">Outros</h3>
+      <ul class="lista">
+        <li v-for="p in outros" :key="p.id" class="item">
+          <div class="topo">
+            <span class="nome">{{ p.nome }}</span>
+            <span class="tag" :class="classeEstado[p.estado]">{{ p.estado }}</span>
+            <a v-if="p.repo" :href="p.repo" target="_blank" rel="noopener" class="link">
+              Código <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="linha">{{ p.linha }}</p>
+          <p class="stack">{{ p.stack.join(' · ') }}</p>
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import ProjectCard from 'src/components/ProjectCard.vue';
-import { projetos, estados, type Estado } from 'src/data/projetos';
+import { destaques, outros, type Estado } from 'src/data/projetos';
 
-type Filtro = 'Todos' | Estado;
-
-const opcoes: Filtro[] = ['Todos', ...estados];
-const filtro = ref<Filtro>('Todos');
-
-const visiveis = computed(() =>
-  filtro.value === 'Todos'
-    ? projetos
-    : projetos.filter((p) => p.estado === filtro.value),
-);
+const classeEstado: Record<Estado, string> = {
+  'Estável, em uso': 'tag-uso',
+  'Em desenvolvimento': 'tag-dev',
+  Finalizado: 'tag-final',
+  Pausado: 'tag-pausa',
+  Descontinuado: 'tag-fim',
+};
 </script>
 
 <style scoped>
 .cabeca { margin-bottom: 28px; }
 
-.barra {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 24px;
-  align-items: center;
-}
-
-.filtro {
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 9px 14px;
-  border: 1px solid var(--rule);
-  background: transparent;
-  color: var(--accent);
-  cursor: pointer;
-  transition: all 160ms var(--ease-out);
-}
-.filtro:hover { border-color: var(--accent); }
-.filtro.ativo {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--paper);
-}
-
-.contagem {
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-left: 6px;
-}
-
-.lista {
+.destaques {
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid var(--rule);
 }
 
-.vazio {
-  padding: 48px 0;
+.outros { margin-top: clamp(40px, 5vw, 64px); }
+
+.lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0 clamp(20px, 3vw, 40px);
+}
+
+.item {
+  border-top: 1px solid var(--rule);
+  padding: 18px 0 22px;
+}
+
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 14px;
+}
+
+.nome { font-size: 20px; }
+
+.tag { font-size: 10px; padding: 2px 7px; }
+
+.link {
   font-family: var(--font-label);
-  font-size: 12px;
-  letter-spacing: 0.12em;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-label);
+  border-bottom-color: rgba(107, 102, 96, 0.4);
+}
+.link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.linha {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.stack {
+  margin-top: 10px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }

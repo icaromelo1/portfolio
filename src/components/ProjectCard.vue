@@ -4,25 +4,18 @@
       <div class="meta">
         <span class="tag" :class="classeEstado">{{ projeto.estado }}</span>
 
-        <a v-if="projeto.repoPublico && projeto.repo" :href="projeto.repo" target="_blank" rel="noopener">
-          Repositório <span aria-hidden="true">↗</span>
+        <a v-if="projeto.noAr" :href="projeto.noAr" target="_blank" rel="noopener">
+          Ver no ar <span aria-hidden="true">↗</span>
         </a>
 
-        <a v-if="projeto.noAr" :href="projeto.noAr" target="_blank" rel="noopener">
-          No ar <span aria-hidden="true">↗</span>
+        <a v-if="projeto.repo" :href="projeto.repo" target="_blank" rel="noopener">
+          Código <span aria-hidden="true">↗</span>
         </a>
       </div>
 
       <h3>{{ projeto.nome }}</h3>
       <p class="linha">{{ projeto.linha }}</p>
-      <p class="descricao">{{ projeto.descricao }}</p>
-
-      <ul v-if="projeto.achados" class="achados">
-        <li v-for="(achado, i) in projeto.achados" :key="i">
-          <span class="marca" aria-hidden="true">·</span>
-          <span>{{ achado }}</span>
-        </li>
-      </ul>
+      <p v-if="projeto.descricao" class="descricao">{{ projeto.descricao }}</p>
       <p class="stack">{{ projeto.stack.join(' · ') }}</p>
     </div>
 
@@ -58,7 +51,7 @@ const classeEstado = computed(
 <style scoped>
 .card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(150px, 260px);
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 320px);
   gap: clamp(20px, 3vw, 44px);
   border-top: 1px solid var(--rule);
   padding: clamp(24px, 3vw, 36px) 0;
@@ -95,30 +88,11 @@ h3 {
 
 .descricao {
   margin-top: 14px;
-  font-size: clamp(15px, 1.5vw, 18px);
+  font-size: clamp(15px, 1.5vw, 17px);
   line-height: 1.6;
   max-width: 62ch;
+  color: var(--ink-body);
 }
-
-.achados {
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid var(--rule);
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 62ch;
-}
-.achados li {
-  display: grid;
-  grid-template-columns: 14px 1fr;
-  gap: 8px;
-  font-size: clamp(14px, 1.4vw, 16px);
-  line-height: 1.5;
-  color: var(--ink-soft);
-}
-.achados .marca { color: var(--accent); }
 
 .stack {
   margin-top: 20px;

@@ -27,15 +27,15 @@
         <div class="marcador">
           <dt class="label-sm">Agora</dt>
           <dd>
-            API central de uma plataforma de saúde ocupacional distribuída em
-            microsserviços.
+            Sistemas do Tribunal de Justiça do Amazonas, na CAST, e a API
+            central de uma plataforma corporativa, como autônomo.
           </dd>
         </div>
         <div class="marcador">
           <dt class="label-sm">Antes</dt>
           <dd>
-            Três sistemas do Tribunal de Justiça do Amazonas, e uma passagem
-            como Tech Lead.
+            Três anos na iColabora, os últimos seis meses como Tech Lead de
+            quatro projetos.
           </dd>
         </div>
         <div class="marcador">
