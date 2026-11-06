@@ -7,15 +7,19 @@
         <a v-if="projeto.noAr" :href="projeto.noAr" target="_blank" rel="noopener">
           Ver no ar <span aria-hidden="true">↗</span>
         </a>
-
-        <a v-if="projeto.repo" :href="projeto.repo" target="_blank" rel="noopener">
-          Código <span aria-hidden="true">↗</span>
-        </a>
       </div>
 
       <h3>{{ projeto.nome }}</h3>
       <p class="linha">{{ projeto.linha }}</p>
-      <p v-if="projeto.descricao" class="descricao">{{ projeto.descricao }}</p>
+      <p class="descricao">{{ projeto.descricao }}</p>
+
+      <dl v-if="projeto.partes" class="partes" :class="{ pares: projeto.partes.length % 2 === 0 }">
+        <div v-for="parte in projeto.partes" :key="parte.nome" class="parte">
+          <dt>{{ parte.nome }}</dt>
+          <dd>{{ parte.texto }}</dd>
+        </div>
+      </dl>
+
       <p class="stack">{{ projeto.stack.join(' · ') }}</p>
     </div>
 
@@ -91,6 +95,32 @@ h3 {
   font-size: clamp(15px, 1.5vw, 17px);
   line-height: 1.6;
   max-width: 62ch;
+  color: var(--ink-body);
+}
+
+.partes {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0 clamp(20px, 3vw, 36px);
+  max-width: 900px;
+}
+.partes.pares { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 760px; }
+.parte {
+  border-top: 1px solid var(--rule);
+  padding: 12px 0 14px;
+}
+.parte dt {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.parte dd {
+  margin-top: 6px;
+  font-size: 15px;
+  line-height: 1.5;
   color: var(--ink-body);
 }
 
