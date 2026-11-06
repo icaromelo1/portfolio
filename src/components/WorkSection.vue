@@ -3,20 +3,19 @@
     <div class="spread cabeca">
       <h2 class="label">Trabalho</h2>
       <p class="band-lede">
-        Três lugares, e o que mudou em cada um enquanto eu estava lá.
+        Sistemas em produção, com gente usando todo dia.
       </p>
     </div>
 
     <div class="lista">
       <article v-for="exp in experiencias" :key="exp.id" class="spread">
         <p class="stamp">
-          {{ exp.rotulo[0] }}<br />
-          <span class="accent">{{ exp.rotulo[1] }}</span><br />
-          {{ exp.rotulo[2] }}
+          {{ exp.periodo }}<br />
+          <span class="accent">{{ exp.empresa }}</span><br />
+          {{ exp.papel }}
         </p>
 
         <div>
-          <h3>{{ exp.titulo }}</h3>
           <p class="resumo">{{ exp.resumo }}</p>
 
           <ul class="pontos">
@@ -25,17 +24,6 @@
               <span>{{ ponto }}</span>
             </li>
           </ul>
-
-          <figure class="diagrama">
-            <figcaption class="label-sm">{{ exp.diagrama.titulo }}</figcaption>
-            <div class="fluxo">
-              <template v-for="(no, i) in exp.diagrama.nos" :key="no.texto">
-                <span v-if="i > 0" class="seta" aria-hidden="true">→</span>
-                <span class="no" :class="{ forte: no.forte }">{{ no.texto }}</span>
-              </template>
-              <span v-if="exp.diagrama.nota" class="nota">· {{ exp.diagrama.nota }}</span>
-            </div>
-          </figure>
         </div>
       </article>
     </div>
@@ -52,7 +40,7 @@ import { experiencias } from 'src/data/trabalho';
 .lista {
   display: flex;
   flex-direction: column;
-  gap: clamp(40px, 5vw, 72px);
+  gap: clamp(36px, 4.5vw, 64px);
 }
 
 .stamp {
@@ -65,20 +53,14 @@ import { experiencias } from 'src/data/trabalho';
 }
 .stamp .accent { color: var(--accent); }
 
-h3 {
-  font-size: clamp(21px, 2.1vw, 26px);
-  letter-spacing: -0.01em;
-}
-
 .resumo {
-  margin-top: 14px;
-  font-size: clamp(16px, 1.6vw, 19px);
-  line-height: 1.62;
+  font-size: clamp(17px, 1.7vw, 20px);
+  line-height: 1.6;
   max-width: 62ch;
 }
 
 .pontos {
-  margin-top: 22px;
+  margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid var(--rule);
   list-style: none;
@@ -90,35 +72,10 @@ h3 {
   display: grid;
   grid-template-columns: 18px 1fr;
   gap: 10px;
-  font-size: clamp(15px, 1.5vw, 18px);
+  font-size: clamp(15px, 1.5vw, 17px);
   line-height: 1.55;
   max-width: 68ch;
+  color: var(--ink-body);
 }
 .marca { color: var(--accent); }
-
-.diagrama {
-  margin-top: 26px;
-  border: 1px solid var(--rule);
-  background: var(--paper-soft);
-  padding: 20px 22px;
-  font-family: var(--font-label);
-}
-.diagrama figcaption { margin-bottom: 14px; }
-
-.fluxo {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 12px;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-}
-.no {
-  border: 1px solid var(--rule-strong);
-  padding: 8px 12px;
-  background: var(--paper);
-}
-.no.forte { border-color: var(--rule-ink); }
-.seta { color: var(--accent); }
-.nota { color: var(--ink-faint); margin-left: 4px; }
 </style>
